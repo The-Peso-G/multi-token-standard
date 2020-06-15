@@ -1,4 +1,4 @@
-pragma solidity ^0.5.16;
+pragma solidity ^0.6.8;
 
 import "../interfaces/IERC1271Wallet.sol";
 import "../utils/LibBytes.sol";
@@ -36,7 +36,7 @@ contract LibEIP712 {
   /**
    * @dev Calculates EIP712 encoding for a hash struct in this EIP712 Domain.
    * @param hashStruct The EIP712 hash struct.
-   * @return EIP712 hash applied to this EIP712 Domain.
+   * @return result EIP712 hash applied to this EIP712 Domain.
    */
   function hashEIP712Message(bytes32 hashStruct)
       internal
@@ -69,10 +69,10 @@ contract ERC1271WalletValidationMock is LibEIP712 {
   address public owner;
 
   // keccak256(
-  //   "metaSafeTransferFrom(address _from,address _to,uint256 _id,uint256 _amount,bool _isGasFee,uint256 nonce,bytes signedData)"
+  //   "metaSafeTransferFrom(address,address,uint256,uint256,bool,bytes)"
   // );
-  bytes32 internal constant META_TX_TYPEHASH = 0xf678ecb30875110e5052a3c6179517684467cd85443a870b802c49d7f710d491;
-
+  bytes32 internal constant META_TX_TYPEHASH = 0xce0b514b3931bdbe4d5d44e4f035afe7113767b7db71949271f6a62d9c60f558;
+  
 
   /***********************************|
   |            Constructor            |
